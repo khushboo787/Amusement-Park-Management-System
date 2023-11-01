@@ -27,7 +27,7 @@ import lombok.Setter;
 public class Activity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer activityId;
 	
 	private String Description;
