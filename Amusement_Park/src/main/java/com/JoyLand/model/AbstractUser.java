@@ -31,7 +31,7 @@ public class AbstractUser {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	
-	@NotNull
+	@NotBlank
 	private String address;
 	
 	@Size(min = 10, message = "Mobile Number should be of 10 digits")
