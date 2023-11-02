@@ -17,7 +17,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Admin extends AbstractUser{
+public class Admin extends AbstractUser
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer adminId;
