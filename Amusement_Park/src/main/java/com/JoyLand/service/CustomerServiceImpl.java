@@ -1,14 +1,21 @@
 package com.JoyLand.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 import com.JoyLand.model.Customer;
 import com.JoyLand.repository.CustomerRepository;
+import com.JoyLand.exception.CustomerException;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class CustomerServiceImpl implements CustomerService{
  
 	@Autowired
@@ -24,6 +31,28 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerRepository.save(customer);
 	}
 
+	@Override
+	public Customer getCustomerDetailsByEmail(String email)throws CustomerException {
+		
+		return customerRepository.findByEmail(email).orElseThrow(() -> new CustomerException("Customer Not found with Email: "+email));
+	}
+
+	@Override
+	public List<Customer> getAllCustomerDetails()throws CustomerException {
+		
+		List<Customer> customers= customerRepository.findAll();
+		
+		if(customers.isEmpty())
+			throw new CustomerException("No Customer find");
+		
+		return customers;
+		
+	}
+	
+	
+	
+	
+	
 	@Override
 	public Customer updateCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -53,5 +82,12 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	
+	
+
+	
 
 }
