@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor  
 @Getter
 @Setter
 @Entity
@@ -27,4 +27,7 @@ public class Customer extends AbstractUser{
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
 	private List<Ticket> tickets = new ArrayList<>();
+	
+	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
+	private List<Activity> activities=new ArrayList<>();
 }

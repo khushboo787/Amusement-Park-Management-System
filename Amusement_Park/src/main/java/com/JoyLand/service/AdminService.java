@@ -2,23 +2,26 @@ package com.JoyLand.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import com.JoyLand.model.Activity;
 import com.JoyLand.model.Admin;
 
 public interface AdminService {
 	
-    public Admin insertAdmin(Admin admin);	
-	public Admin updateAdmin(Admin admin);
-	public Admin deleteAdmin(Integer adminId);
+	   String insertAdmin(Admin admin);
 
-	public List<Activity> getAllActivitiesByCustomerID(Integer cutomerId);
+	    String updateAdmin(Admin admin, int id);
 
-	public List<Activity> getAllActivities();
-	
-	public List<Activity> getActivitiesCustomerwise(LocalDate date);
+	    List<Activity> getAllActivities();
 
-	public List<Activity> getActivitiesDatewise(LocalDate date);
+	    Admin deleteAdminById(int id);
 
-	public List<Activity> getActivitiesForDays(Integer customerId, LocalDate fromDate, LocalDate toDate);
+	    List<Activity> getAllActivitiesByCustomerId(int customerId);
+
+	    Map<String, List<Activity>> getActivitiesCustomerWise();
+
+	    List<Activity> getActivitiesDateWise();
+
+	    List<Activity> getActivitiesForDays(int customerId, LocalDate fromDate, LocalDate toDate);
 }
