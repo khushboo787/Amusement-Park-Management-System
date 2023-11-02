@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrapper">
+      <!-- <div class="logo"><a href="#">CodingNepal</a></div> -->
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="login.html">Welcome to the Login Page Of JoyLand</a></li>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+      <div id="account-div" >
+          <a href="login.html">Login/Signup</a>
+          <a href="./profile.html">My Account <i class="fa-solid fa-user"></i></a>
+        </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="forms">
+      <div class="form login">
+        <span class="title">Login</span>
+
+
+        <form action="#">
+          <div class="input-field">
+            <input type="text" name="" id="email" placeholder="Enter your email" required>
+            <i class="uil uil-envelope"></i>
+          </div>
+          <div class="input-field">
+            <input type="password" class="password" name="" id="" placeholder="Enter your password" required>
+            <i class="uil uil-lock icon"></i>
+            <i class="uil uil-eye-slash shoehidepw"></i>
+          </div>
+          <p id="message"></p>
+          <div class="checkbox-text">
+            <div class="checkbox-content">
+              <input type="checkbox" id="logcheck">
+              <label for="logcheck" class="text">Remamber me</label>
+            </div>
+            <a href="#" class="text">Forgot password?</a>
+          </div>
+
+          <div class="input-field button">
+            <input type="submit" name="" id="btn" value="Login Now">
+          </div>
+        </form>
+        <div class="login-signup">
+          <span class="text">Not a member?
+            <a href="./singup.html" class="text signup-text">Signup now</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div id="footer-child">
+      <div>
+        <a href="">
+          <img src="assests/JoyLand.png">
+          <h1>JoyLand</h1>
+        </a>
+
+      </div>
+      <div id="about-us">
+        <h2>About Us</h2>
+        <p>JoyLand is a Amusement Park <br>
+          established in 1856 by Thomas Shelby<br>
+          headquartered in London, England.[3] <br>
+          unforgettable experiences and thrilling  <br>
+          adventures, including Products<br>
+          (for which it is most famous),<br>
+          adventures and Hotels. <br>
+          Its name and branding are licensed to <br>
+          Coty for warner bros<br>
+         Located in USA.[5]
+        </p>
+      </div>
+      <div>
+        <h2>Let Us Help You</h2>
+        <ul>
+          <li><a href="">COVID-19 and JoyLand</a></li>
+          <li><a href="">Your Account</a></li>
+          <li><a href="">Returns Centre</a></li>
+          <li><a href="">100% Purchase Protection</a> </li>
+          <li><a href="">JoyLand App Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Fun with JoyLand</h2>
+        <ul>
+          <li><a href="">Ride in JoyLand</a></li>
+          <li><a href="">Book a ride in  JoyLand Accelerator</a></li>
+          <li><a href="">Book a room in Hotels</a></li>
+          <li><a href="">Enjoy Testy Food</a></li>
+          <li><a href="">Become an Affiliate</a></li>
+          <li><a href="">Fulfilment by JoyLand</a></li>
+          <li><a href="">Buy our Products</a></li>
+          <li><a href="">JoyLand Pay on Gifts</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+  <div id="who-are-you">
+    <p>what do you want ?</p>
+    <div>
+      <button id="userb">User login</button>
+      <a href="./Admin Site/admin.html"><button>Admin login</button></a>
+    </div>
+    <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png" alt="" id="cross">
+  </div>
+
+
+</body>
+<script src="login.js"></script>
+
+</html>
