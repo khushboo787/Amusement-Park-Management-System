@@ -1,6 +1,8 @@
 package com.JoyLand.service;
 
 import java.util.List;
+
+import com.JoyLand.exception.CustomerException;
 import com.JoyLand.model.Customer;
 
 public interface CustomerService {
@@ -10,4 +12,6 @@ public interface CustomerService {
 	public List<Customer> viewAllCustomer();
 	public Customer viewCustomerById(Integer customerID);
 	public Customer validateCustomer(String username, String password);
+	List<Customer> getAllCustomerDetails() throws CustomerException;
+	Customer getCustomerDetailsByEmail(String email) throws CustomerException;
 }

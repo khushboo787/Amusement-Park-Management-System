@@ -1,23 +1,6 @@
 package com.JoyLand.service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.JoyLand.exception.AdminException;
-import com.JoyLand.model.Activity;
-import com.JoyLand.model.Admin;
-import com.JoyLand.model.Customer;
-import com.JoyLand.model.Ticket;
-import com.JoyLand.repository.ActivityRepository;
-import com.JoyLand.repository.AdminRepository;
-import com.JoyLand.repository.CustomerRepository;
-import com.JoyLand.repository.TicketRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService {
