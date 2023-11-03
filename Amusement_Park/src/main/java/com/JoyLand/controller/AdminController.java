@@ -62,7 +62,7 @@ public class AdminController
   @GetMapping("admin/call")
   public String calladmin()
   {
-	  return"from admin";
+	  return"I am from admin what is work ksnnasdjnvjmlkmv";
   }
   
   @GetMapping("admin/activites")
