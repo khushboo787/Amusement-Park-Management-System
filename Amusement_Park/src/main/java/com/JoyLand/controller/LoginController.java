@@ -26,7 +26,7 @@ public class LoginController {
 		log.info("Inside the getLoggedInCustomerDetailsHandler");
 		System.out.println(auth);		
 		 Customer customer= customerService.getCustomerDetailsByEmail(auth.getName());
-		 
+		
 		 return new ResponseEntity<>(customer.getUsername()+ " Logged In Successfully", HttpStatus.ACCEPTED);	
 	}
 }

@@ -37,12 +37,12 @@ public class Customer extends AbstractUser implements UserDetails{
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
 	@JsonIgnore
 	private List<Ticket> tickets;
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
+	@JsonIgnore
+	private List<Activity> activities;
 
 	private String role;
-	
-	
-	
-	
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -69,6 +69,7 @@ public class Customer extends AbstractUser implements UserDetails{
 		// TODO Auto-generated method stub
 		return Arrays.asList(new SimpleGrantedAuthority("USER"));
 	}
+
 
 	
 

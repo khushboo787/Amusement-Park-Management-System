@@ -7,8 +7,8 @@ import com.JoyLand.model.TripBooking;
 
 public interface TicketBookingService {
 	
-	public Ticket insertTicket(Ticket ticket, Integer activity_id);
-
+	public Ticket createTicket(Integer customerId, Integer activityId, Ticket ticket);
+	
 	public Ticket updateTicket(Integer ticket_id,Integer activity_id);
 
 	public Ticket deleteTicket(Integer ticketId);
@@ -16,4 +16,6 @@ public interface TicketBookingService {
 	public List<Ticket> viewAllTickets(Integer customerId);
 
 	public TripBooking calculateBill(Integer customerId);
+
+	
 }

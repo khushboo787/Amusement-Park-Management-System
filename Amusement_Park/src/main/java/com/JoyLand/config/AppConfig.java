@@ -55,9 +55,9 @@ public class AppConfig {
 		})
 		.authorizeHttpRequests(auth ->{
 			auth
-				.requestMatchers(HttpMethod.POST,"/customers").permitAll()
-			//	.requestMatchers(HttpMethod.GET, "/customers").hasRole("ADMIN")
-			//	.requestMatchers(HttpMethod.GET, "/customers/**").hasAnyRole("ADMIN","USER")
+				.requestMatchers(HttpMethod.POST,"/registerCustomer","/insertActivity").permitAll()
+			//	.requestMatchers(HttpMethod.GET, "/viewCustomers").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/viewCustomers","/viewCustomerById/{id}").hasAnyRole("ADMIN","USER")
 				.anyRequest().authenticated();
 			
 				})
