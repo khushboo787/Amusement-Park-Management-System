@@ -22,7 +22,7 @@ import com.JoyLand.model.Activity;
 import com.JoyLand.model.Admin;
 import com.JoyLand.service.AdminServiceImpl;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
@@ -59,7 +59,11 @@ public class AdminController
 	  List<Activity> activities =adminserv.getAllActivitiesByCustomerId(id);
 	  return new ResponseEntity(activities,HttpStatus.OK);
   }
-  
+  @GetMapping("admin/call")
+  public String calladmin()
+  {
+	  return"from admin";
+  }
   
   @GetMapping("admin/activites")
   public ResponseEntity<List<Activity>>getAllActivityByAdmin()

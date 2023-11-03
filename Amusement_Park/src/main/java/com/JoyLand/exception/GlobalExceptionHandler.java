@@ -50,6 +50,12 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), ms.getMessage(), req.getDescription(false)), HttpStatus.BAD_REQUEST);
 	}
 	
+
+	@ExceptionHandler(AdminException.class)
+	public ResponseEntity<ErrorDetails> AdminExceptionHandler(AdminException ms, WebRequest req) {
+		return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), ms.getMessage(), req.getDescription(false)), HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(TicketException.class)
 	public ResponseEntity<ErrorDetails> TicketExceptionHandler(TicketException ms, WebRequest req) {
 		return new ResponseEntity<>(new ErrorDetails(LocalDateTime.now(), ms.getMessage(), req.getDescription(false)), HttpStatus.BAD_REQUEST);
