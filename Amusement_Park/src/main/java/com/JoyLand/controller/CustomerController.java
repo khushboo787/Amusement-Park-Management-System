@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.JoyLand.exception.CustomerException;
+import com.JoyLand.model.Activity;
 import com.JoyLand.model.Customer;
+import com.JoyLand.model.Ticket;
 import com.JoyLand.service.CustomerService;
 
 
@@ -49,6 +51,19 @@ public class CustomerController {
 		
 		customer.setRole("ROLE_"+customer.getRole().toUpperCase());
 		
+		List<Activity> actList= customer.getActivities();
+		if( actList != null) {
+			for(Activity ac: actList) {
+				ac.setCustomer(customer);
+			}
+		}
+		
+		List<Ticket> tcList= customer.getTickets();
+		if( tcList != null) {
+			for(Ticket tc: tcList) {
+				tc.setCustomer(customer);
+			}
+		}
 		
 		Customer registeredCustomer= customerService.insertCustomer(customer);
 		
