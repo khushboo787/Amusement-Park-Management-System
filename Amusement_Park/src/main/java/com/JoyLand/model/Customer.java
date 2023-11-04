@@ -35,11 +35,9 @@ public class Customer extends AbstractUser implements UserDetails{
 	private Integer customerId;
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
-	@JsonIgnore
 	private List<Ticket> tickets;
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
-	@JsonIgnore
 	private List<Activity> activities;
 
 	private String role;

@@ -31,6 +31,7 @@ public class Activity {
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
+	@JsonIgnore
 	private Customer customer;
 	
 }

@@ -13,11 +13,13 @@ import com.JoyLand.repository.CustomerRepository;
 import com.JoyLand.repository.TicketRepository;
 import com.JoyLand.exception.ActivityException;
 import com.JoyLand.exception.CustomerException;
+import com.JoyLand.exception.TicketException;
 import com.JoyLand.model.Activity;
 import com.JoyLand.model.Customer;
 
 @Service
 public class TicketBookingServiceImpl implements TicketBookingService {
+	
 	@Autowired
 	TicketRepository ticketRepository;
 	
@@ -60,20 +62,48 @@ public class TicketBookingServiceImpl implements TicketBookingService {
 
 	@Override
 	public Ticket deleteTicket(Integer ticketId) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Ticket> optionalTicket = ticketRepository.findById(ticketId);
+
+		if (optionalTicket.isPresent()) {
+
+			ticketRepository.delete(optionalTicket.get());
+			
+			return optionalTicket.get();
+
+		} else {
+
+			throw new TicketException("Please Enter Correct ticket Id :");
+		}
 	}
 
 	@Override
 	public List<Ticket> viewAllTickets(Integer customerId) {
-		// TODO Auto-generated method stub
-		return null;
+		Customer cus = customerRepository.findById(customerId).get();
+		if(cus!=null) {
+			  List<Ticket> tcList = cus.getTickets();
+			   return tcList;
+		}
+	   throw new  CustomerException("Invalid customer id");
 	}
 
 	@Override
-	public TripBooking calculateBill(Integer customerId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int calculateBill(Integer customerId) {
+		TripBooking trip = new TripBooking();
+		int totalAmount = 0;
+		
+		Customer cus = customerRepository.findById(customerId).get();
+		if(cus!=null) {
+			  List<Ticket> tcList = cus.getTickets();
+			  trip.setTickets(tcList);
+			  for (Ticket t : tcList) {
+					totalAmount += t.getActivity().getCharge();
+				}
+
+				trip.setTotalAmount(totalAmount);
+
+		}
+		
+		return totalAmount;
 	}
 
 	

@@ -46,11 +46,6 @@ public class CustomerController {
 
 	@PostMapping("/registerCustomer")
 	public ResponseEntity<Customer> registeredCustomer(@Valid @RequestBody Customer customer){
-		
-		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-		
-		customer.setRole("ROLE_"+customer.getRole().toUpperCase());
-		
 		List<Activity> actList= customer.getActivities();
 		if( actList != null) {
 			for(Activity ac: actList) {
@@ -64,6 +59,10 @@ public class CustomerController {
 				tc.setCustomer(customer);
 			}
 		}
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+		
+		customer.setRole("ROLE_"+customer.getRole().toUpperCase());
+		
 		
 		Customer registeredCustomer= customerService.insertCustomer(customer);
 		

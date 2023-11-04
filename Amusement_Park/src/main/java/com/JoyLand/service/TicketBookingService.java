@@ -1,6 +1,7 @@
 package com.JoyLand.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.JoyLand.model.Ticket;
 import com.JoyLand.model.TripBooking;
@@ -13,9 +14,11 @@ public interface TicketBookingService {
 
 	public Ticket deleteTicket(Integer ticketId);
 
-	public List<Ticket> viewAllTickets(Integer customerId);
+	List<Ticket>  viewAllTickets(Integer customerId);
 
-	public TripBooking calculateBill(Integer customerId);
+	int calculateBill(Integer customerId);
+
+	
 
 	
 }

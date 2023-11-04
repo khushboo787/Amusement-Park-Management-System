@@ -1,5 +1,7 @@
 package com.JoyLand.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,24 @@ public class ActivityController {
 	public ResponseEntity<String> deleteActivity(@PathVariable ("activityid") Integer activityid){
 
 		return new ResponseEntity<>(activityService.deleteActivity(activityid), HttpStatus.OK);
+
+	}
+	
+	
+	@GetMapping("/viewActivityofCharges/{charges}")
+	public ResponseEntity<List<Activity>> viewActivityofCharges(@PathVariable ("charges") float charges) {
+
+		List<Activity> actList = activityService.viewActivitiesOfCharges(charges);
+
+		return new ResponseEntity<List<Activity>>(actList, HttpStatus.OK);
+
+	}
+	@GetMapping("/countActivityOfCharges/{charges}")
+	public ResponseEntity<Integer> countActivityofCharges( @PathVariable ("charges") float charges) {
+
+		int actCount = activityService.countActivitiesOfCharges(charges);
+
+		return new ResponseEntity<Integer>(actCount, HttpStatus.OK);
 
 	}
 }

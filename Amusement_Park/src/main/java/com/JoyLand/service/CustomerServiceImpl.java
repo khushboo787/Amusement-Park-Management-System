@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.JoyLand.model.Activity;
 import com.JoyLand.model.Customer;
+import com.JoyLand.model.Ticket;
 import com.JoyLand.repository.CustomerRepository;
 import com.JoyLand.exception.CustomerException;
 import lombok.extern.slf4j.Slf4j;
@@ -32,19 +33,14 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer insertCustomer(Customer customer) {
 		log.info("insert new customer");
-		List<Activity> actList= customer.getActivities();
-//		for(Activity a:act) {
-//			a.setCustomer(customer);
-//		}
-//		Optional<Customer> existingCustomer = customerRepository.findByEmail(customer.getEmail());
-//		
-//		if(existingCustomer.isPresent()) throw new CustomerException("Customer with this email has already been registered. Please use a different email ID.");		
-//	if( actList != null) {
-//		for(Activity ac: actList) {
-//			ac.setCustomer(customer);
-//		}
-//	}
+		
+		Optional<Customer> cus = customerRepository.findByEmail(customer.getEmail());		
+		if(cus.isPresent()) throw new CustomerException("Customer with this email has already been registered. Please use a different email ID.");		
+
+	    
 		return customerRepository.save(customer); 
+	
+		
 	}
 
 	

@@ -39,12 +39,11 @@ public class Ticket {
 	
 	@ManyToOne
 	@JoinColumn(name = "customerId")
-	@JsonIgnore
+    @JsonIgnore
 	private Customer customer;
 
 	@ManyToOne
 	@JoinColumn(name = "activityId")
-	@JsonIgnore
 	private Activity activity;
 	
 	@FutureOrPresent(message = "Date for which customer has booked the ticket.It can be future of present")

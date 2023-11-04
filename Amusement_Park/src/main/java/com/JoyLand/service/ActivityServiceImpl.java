@@ -31,6 +31,7 @@ public class ActivityServiceImpl implements ActivityService{
 		return activityRepository.save(activity);
 	}
 
+	
 	@Override
 	public Activity updateActivity(Integer activityid, Activity activity) {
 		
@@ -52,6 +53,8 @@ public class ActivityServiceImpl implements ActivityService{
 
 	}
 
+	
+	
 	@Override
 	public String deleteActivity(int activityid) {
 		 java.util.Optional<Activity> a = activityRepository.findById(activityid);
@@ -64,17 +67,38 @@ public class ActivityServiceImpl implements ActivityService{
 		}
 		return "Activity deleted successfully.";
 	}
+	
+	
 
 	@Override
-	public List<Activity> viewActivitiesOfCharges(float charges) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Activity> viewActivitiesOfCharges(float charges)  {
+
+		List<Activity> act = activityRepository.findByCharge(charges);
+
+		if (act.isEmpty()) {
+
+			throw new ActivityException("No any activity  in our activity table");
+		} else {
+
+			return act;
+		}
+
 	}
 
+
+	
 	@Override
-	public int countActivitiesOfCharges(float charges) {
+	public int countActivitiesOfCharges(float charges){
 		// TODO Auto-generated method stub
-		return 0;
+		List<Activity> act = activityRepository.findByCharge(charges);
+
+		if (act.isEmpty()) {
+
+			throw new ActivityException("No activity List Database");
+		} else {
+
+			return act.size();
+		}
 	}
 
 }
