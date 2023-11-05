@@ -1,7 +1,6 @@
 package com.JoyLand.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.security.auth.login.LoginException;
 
@@ -17,8 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.JoyLand.exception.ActivityException;
 import com.JoyLand.exception.CustomerException;
+import com.JoyLand.model.Activity;
+import com.JoyLand.model.Customer;
 import com.JoyLand.model.Ticket;
 import com.JoyLand.model.TripBooking;
+import com.JoyLand.service.CustomerService;
 import com.JoyLand.service.TicketBookingService;
 
 import jakarta.validation.Valid;
@@ -27,6 +29,8 @@ import jakarta.validation.Valid;
 public class TicketController {
 	@Autowired
 	TicketBookingService ticketBookingService;
+	@Autowired
+	CustomerService customerService;
 	
 	@PostMapping("/tickets/{customerId}/{activityId}")
 	public ResponseEntity<Ticket> createTicketHandler(@PathVariable Integer customerId, @PathVariable Integer activityId,@Valid @RequestBody Ticket ticket) throws ActivityException, CustomerException {
@@ -53,9 +57,10 @@ public class TicketController {
 	
 
 	@GetMapping("/calculateBill/{customerId}")
-	public ResponseEntity<Integer> getBillHandler(@PathVariable Integer customerId)throws LoginException {
+	public ResponseEntity<TripBooking> getBillHandler(@PathVariable Integer customerId)throws LoginException {
 
-		int trip = ticketBookingService.calculateBill(customerId);
+		
+		TripBooking trip = ticketBookingService.calculateBill(customerId);
 
 		return new ResponseEntity<>(trip, HttpStatus.OK);
 

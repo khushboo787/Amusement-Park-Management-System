@@ -21,7 +21,7 @@ public class LoginController {
 		this.customerService = customerService;
 	}
 
-	@GetMapping("/signIn")
+	@GetMapping("/user/signIn")
 	public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
 		log.info("Inside the getLoggedInCustomerDetailsHandler");
 		System.out.println(auth);		
@@ -29,4 +29,12 @@ public class LoginController {
 		
 		 return new ResponseEntity<>(customer.getUsername()+ " Logged In Successfully", HttpStatus.ACCEPTED);	
 	}
+//	@GetMapping("/admin/signIn")
+//	public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
+//		log.info("Inside the getLoggedInCustomerDetailsHandler");
+//		System.out.println(auth);		
+//		 Customer customer= customerService.getCustomerDetailsByEmail(auth.getName());
+//		
+//		 return new ResponseEntity<>(customer.getUsername()+ " Logged In Successfully", HttpStatus.ACCEPTED);	
+//	}
 }

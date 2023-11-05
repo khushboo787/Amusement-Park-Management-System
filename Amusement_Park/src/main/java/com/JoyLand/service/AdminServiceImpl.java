@@ -43,23 +43,23 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public String updateAdmin(Admin admin, int id) {
-//        Optional<Admin> existingAdmin = adminRepo.findById(id);
-//        if (existingAdmin.isPresent()) {
-//            Admin adminData = existingAdmin.get();
-//
-//            // Update the admin's fields
-//            adminData.setUsername(admin.getUsername());
-//            adminData.setPassword(admin.getPassword());
-//            adminData.setAddress(admin.getAddress());
-//            adminData.setMobileNumber(admin.getMobileNumber());
-//            adminData.setEmail(admin.getEmail());
-//
-//            adminRepo.save(adminData);
-//            return "Admin successfully updated";
-//        } else {
-//            throw new AdminException("Admin not found with ID: " + id);
-//        }
-    	return null;
+    	java.util.Optional<Admin> existingAdmin = adminRepo.findById(id);
+        if (existingAdmin.isPresent()) {
+            Admin adminData = existingAdmin.get();
+
+            // Update the admin's fields
+            adminData.setUsername(admin.getUsername());
+            adminData.setPassword(admin.getPassword());
+            adminData.setAddress(admin.getAddress());
+            adminData.setMobileNumber(admin.getMobileNumber());
+            adminData.setEmail(admin.getEmail());
+
+            adminRepo.save(adminData);
+            return "Admin successfully updated";
+        } else {
+            throw new AdminException("Admin not found with ID: " + id);
+        }
+    	
     }
 
     public List<Activity> getAllActivities() {
@@ -67,25 +67,25 @@ public class AdminServiceImpl implements AdminService {
     }
 
     public Admin deleteAdminById(int id) {
-//        Optional<Admin> admin = adminRepo.findById(id);
-//        if (admin.isPresent()) {
-//            adminRepo.deleteById(id);
-//            return admin.get();
-//        } else {
-//            throw new AdminException("Admin not found with ID: " + id);
-//        }
-    	return null;
+    	java.util.Optional<Admin> admin = adminRepo.findById(id);
+        if (admin.isPresent()) {
+            adminRepo.deleteById(id);
+            return admin.get();
+        } else {
+            throw new AdminException("Admin not found with ID: " + id);
+        }
+    	
     }
 
     public List<Activity> getAllActivitiesByCustomerId(int customerId) {
-//        Optional<Customer> customer = customerRepo.findById(customerId);
-//        if (customer.isPresent()) {
-//            Customer customerData = customer.get();
-//            return customerData.getActivities();
-//        } else {
-//            throw new AdminException("Customer not found with ID: " + customerId);
-//        }
-    	return null;
+    	java.util.Optional<Customer> customer = customerRepo.findById(customerId);
+        if (customer.isPresent()) {
+            Customer customerData = customer.get();
+            return customerData.getActivities();
+        } else {
+            throw new AdminException("Customer not found with ID: " + customerId);
+        }
+   
     }
 
     public Map<String, List<Activity>> getActivitiesCustomerWise() {

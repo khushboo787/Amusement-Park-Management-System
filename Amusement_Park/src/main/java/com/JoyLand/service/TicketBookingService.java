@@ -16,7 +16,7 @@ public interface TicketBookingService {
 
 	List<Ticket>  viewAllTickets(Integer customerId);
 
-	int calculateBill(Integer customerId);
+	TripBooking calculateBill(Integer customerId);
 
 	
 

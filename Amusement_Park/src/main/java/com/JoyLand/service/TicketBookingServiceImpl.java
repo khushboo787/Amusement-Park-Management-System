@@ -87,11 +87,13 @@ public class TicketBookingServiceImpl implements TicketBookingService {
 	}
 
 	@Override
-	public int calculateBill(Integer customerId) {
-		TripBooking trip = new TripBooking();
+	public TripBooking calculateBill(Integer customerId) {
+		
 		int totalAmount = 0;
 		
 		Customer cus = customerRepository.findById(customerId).get();
+		TripBooking trip = new TripBooking();
+		trip.setCustomer(cus);
 		if(cus!=null) {
 			  List<Ticket> tcList = cus.getTickets();
 			  trip.setTickets(tcList);
@@ -103,7 +105,7 @@ public class TicketBookingServiceImpl implements TicketBookingService {
 
 		}
 		
-		return totalAmount;
+		return trip;
 	}
 
 	
