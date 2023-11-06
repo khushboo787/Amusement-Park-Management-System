@@ -1,8 +1,8 @@
 const form = document.querySelector("form");
-(eField = form.querySelector(".email")),
-  (eInput = eField.querySelector("input")),
-  (pField = form.querySelector(".password")),
-  (pInput = pField.querySelector("input"));
+let eField = form.querySelector(".email");
+let eInput = eField.querySelector("input");
+let pField = form.querySelector(".password");
+let pInput = pField.querySelector("input");
 
 form.onsubmit = (e) => {
   e.preventDefault(); //preventing from form submitting
@@ -64,43 +64,71 @@ form.onsubmit = (e) => {
   }
 };
 
-let email = document.querySelector("#login-email");
-let password = document.querySelector("#login-password");
-let admin_crediencial = [];
-let alert = document.querySelector(".alert");
+let passcode_div = document.querySelector("#passcode"); //for varify if admin or not
+let new_form = document.querySelector(".wrapper"); //entire registration form
+let names = document.querySelector("#admin-name");
+let email = document.getElementById("admin-email");
+let password = document.getElementById("admin-password");
+let url = "https://6410847f7b24bb91f21fd94b.mockapi.io/ali"; //api for post http method
+let code = "admin"; //passcode
+let taking_code = document.querySelector("#code"); //passcode input
+let taking_code_form = document.querySelector("#passcode form");
+let alert = document.querySelector(".alert"); //if passcode is wrong
+
+let registration_check = localStorage.getItem("registration"); // check if already registration done or not
 
 window.addEventListener("load", () => {
-  getApi();
+  new_form.style.display = "none";
+  passcode_div.style.display = "block";
+  if (registration_check !== null) {
+  window.location='./admin.login.html'
+  }
 });
 
-async function getApi() {
-  let url = "https://6410847f7b24bb91f21fd94b.mockapi.io/ali";
-  let res = await fetch(url);
-  let data = await res.json();
-  admin_crediencial = data;
-}
-
-form.addEventListener("submit", (e) => {
+taking_code_form.addEventListener("submit", (e) => {
+  // passcode div
   e.preventDefault();
-  let name;
-  let data = {
-    email: email.value,
-    password: password.value,
-  };
-  let admin = admin_crediencial.filter((ele) => {
-    return ele.email == data.email && ele.password == data.password;
-  });
-  if (admin.length == 0) {
+
+  if (code == taking_code.value) {
+    passcode_div.style.display = "none";
+    new_form.style.display = "block";
+  } else {
     alert.style.display = "block";
     setTimeout(() => {
       alert.style.display = "none";
-    }, 500);
-  } else {
-    admin.forEach((ele) => {
-      name = ele.name;
-    });
-    localStorage.setItem("admin", name);
-    window.location = "adminDashboard.html";
-    localStorage.setItem("check", true);
+    }, 1000);
+  }
+  taking_code_form.reset();
+});
+
+form.addEventListener("submit", (e) => {
+e.preventDefault();
+  // registration via post method
+  if (names.value !== "" && email.value !== "" && password.value !== "") {
+    let data = {
+      name: names.value,
+      email: email.value,
+      password: password.value,
+    };
+    registration(data);
+   
+    
   }
 });
+
+async function registration(details) {
+  try {
+    let res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(details),
+    });
+    let data = await res.json();
+    localStorage.setItem("registration", true);
+    window.location="./admin.login.html"
+  } catch (error) {
+    console.log(error);
+  }
+}
