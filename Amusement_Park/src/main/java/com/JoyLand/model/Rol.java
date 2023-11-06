@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @AllArgsConstructor
-public enum Role {
+public enum Rol {
 	
 	ADMIN("ROLE_ADMIN"),
 	USER("ROLE_USER");

@@ -35,40 +35,42 @@ public class Customer extends AbstractUser implements UserDetails{
 	private Integer customerId;
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
-	@JsonIgnore
 	private List<Ticket> tickets;
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL )
+	private List<Activity> activities;
 
 	private String role;
-	
-	
-	
-	
 
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
+	
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
+	
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return Arrays.asList(new SimpleGrantedAuthority("USER"));
 	}
+
 
 	
 

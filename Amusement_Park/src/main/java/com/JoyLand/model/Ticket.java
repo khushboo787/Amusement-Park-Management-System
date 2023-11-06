@@ -1,12 +1,16 @@
 package com.JoyLand.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +20,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,16 +39,17 @@ public class Ticket {
 	
 	@ManyToOne
 	@JoinColumn(name = "customerId")
-	@JsonIgnore
+    @JsonIgnore
 	private Customer customer;
 
 	@ManyToOne
 	@JoinColumn(name = "activityId")
-	@JsonIgnore
 	private Activity activity;
+	
+	@FutureOrPresent(message = "Date for which customer has booked the ticket.It can be future of present")
+	private LocalDateTime dateTime;
 
-	@FutureOrPresent(message = "ticketBooking date must be of today or future")
-	private LocalDate dateTime;
-
+	
+	
 	
 }

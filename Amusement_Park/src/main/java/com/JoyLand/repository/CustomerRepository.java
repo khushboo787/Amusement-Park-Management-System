@@ -8,5 +8,9 @@ import com.JoyLand.model.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 	Optional<Customer> findByEmail(String email);
+
+	Optional<Customer> findByUsername(String username);
+
+	Optional<Customer> findByPassword(String password);
 	
 }

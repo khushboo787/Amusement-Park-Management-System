@@ -15,4 +15,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer>
     List<Ticket> findTicketsByCustomerIdAndDateRange(@Param("customerId") int customerId, @Param("fromdate") LocalDate fromdate, @Param("todate") LocalDate todate);
 
 	List<Ticket> findAllByOrderByDateTimeAsc();
+	
+	@Query("select c.tickets from Customer c where c.customerId = ?1")
+	public List<Ticket> getAllTicketsByCustomerId(Integer customer_id);
 }
