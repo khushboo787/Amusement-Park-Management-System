@@ -1,6 +1,6 @@
 # actual-shoes-7533
 
-# nippy-flavor-9468
+
 
 <p align="center">
  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Delicious+Handrawn&weight=100&size=53&pause=1000&color=C3F70C&center=true&vCenter=true&width=605&height=118&lines=JoyLand" alt="Typing SVG" /></a>
@@ -82,7 +82,7 @@ http://localhost:8888/swagger-ui/index.html
 1. Clone the repository using the command:
    ```
  https://github.com/khushboo787/actual-shoes-7533
-   ```
+ 
 
 2. Compile and run the Java application to launch the console-based shopping platform.
 
@@ -97,7 +97,6 @@ We welcome contributions! Feel free to fork the repository, enhance functionalit
 
 This project is licensed under the MIT License. Refer to the [LICENSE](LICENSE) file for detailed terms.
 
----
 
 For any inquiries or feedback, contact us at [contact@Joyland.com](mailto:contact@sweethoneydukes.com). Embark on your journey with Joyland today!
 
