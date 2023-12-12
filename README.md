@@ -89,6 +89,13 @@ http://localhost:8888/swagger-ui/index.html
 ## Deployed Link
 
 https://6548cfa162392e15659aba40--lovely-vacherin-163d50.netlify.app/
+
+## ER Diagram
+
+<img src="https://github.com/khushboo787/actual-shoes-7533/assets/115460837/044d815d-e073-4852-aaa9-9314b4e07078
+" alt="ER Diagram" />
+
+
 ## Contributions
 
 We welcome contributions! Feel free to fork the repository, enhance functionalities, and submit pull requests.
