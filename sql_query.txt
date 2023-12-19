@@ -1,0 +1,43 @@
+CREATE TABLE customer (
+    customer_id INT NOT NULL AUTO_INCREMENT,
+    address VARCHAR(255),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    mobile_number VARCHAR(255),
+    password VARCHAR(255),
+    username VARCHAR(255),
+    role VARCHAR(255),
+    PRIMARY KEY (customer_id)
+);
+
+
+CREATE TABLE admin (
+    admin_id INT NOT NULL AUTO_INCREMENT,
+    address VARCHAR(255),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    mobile_number VARCHAR(255),
+    password VARCHAR(255),
+    username VARCHAR(255),
+    role VARCHAR(255),
+    PRIMARY KEY (admin_id)
+);
+
+
+CREATE TABLE activity (
+    activity_id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(255),
+    charge FLOAT,
+    customer_id INT,
+    PRIMARY KEY (activity_id),
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+);
+
+
+CREATE TABLE ticket (
+    ticket_id INT NOT NULL AUTO_INCREMENT,
+    date_time DATETIME(6),
+    activity_id INT,
+    customer_id INT,
+    PRIMARY KEY (ticket_id),
+    FOREIGN KEY (activity_id) REFERENCES activity(activity_id),
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+);
